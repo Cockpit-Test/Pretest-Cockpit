@@ -392,6 +392,3 @@ class Cmpo(models.Model):
     
     class Meta:
         db_table = 'main_cmpo'
-   
-        
-    
