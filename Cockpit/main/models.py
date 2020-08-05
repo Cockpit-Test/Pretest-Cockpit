@@ -332,51 +332,6 @@ class Kpi_input(models.Model):
     def __str__(self):
         return self.hospcode +' - '+self.kpi_value
 
-class Kpi_input_null(models.Model):
-   
-    kpi_id = models.CharField(max_length=5)
-    hospcode = models.CharField(max_length=5)
-    kpi_month = models.DateField()
-    kpi_year = models.DateField(null=True,blank=True)
-    a1 = models.CharField(max_length=155)
-    b1 = models.CharField(max_length=155)
-    a2 = models.CharField(max_length=155)
-    b2 = models.CharField(max_length=155)
-    a3 = models.CharField(max_length=155)
-    b3 = models.CharField(max_length=155)
-    a4 = models.CharField(max_length=155)
-    b4 = models.CharField(max_length=155)
-    a5 = models.CharField(max_length=155)
-    b5 = models.CharField(max_length=155)
-    a6 = models.CharField(max_length=155)
-    b6 = models.CharField(max_length=155)
-    a7 = models.CharField(max_length=155)
-    b7 = models.CharField(max_length=155)
-    a8 = models.CharField(max_length=155)
-    b8 = models.CharField(max_length=155)
-    a9 = models.CharField(max_length=155)
-    b9 = models.CharField(max_length=155)
-    a10 = models.CharField(max_length=155)
-    b10 = models.CharField(max_length=155)
-    a11 = models.CharField(max_length=155)
-    b11 = models.CharField(max_length=155)
-    a12 = models.CharField(max_length=155)
-    b12 = models.CharField(max_length=155)
-    etc = models.TextField()
-    kpi_value = models.CharField(max_length=15)
-    d_update = models.DateTimeField(default=timezone.now)
-    input_date = models.DateTimeField(auto_now_add=())
-    note = models.TextField(null=True, blank=True)
-
-    def save(self, *args, **kwargs):
-        if not self.id:
-            self.created = timezone.now()
-        self.modified = timezone.now()
-        return super(Kpi_input_null, self).save(*args, **kwargs)
-
-    def __str__(self):
-        return self.hospcode +' - '+self.kpi_value
-
 class Kpi_prov(models.Model):
     ex = models.CharField(max_length=15)
     kpi_id = models.CharField(max_length=5)
@@ -437,4 +392,3 @@ class Cmpo(models.Model):
     
     class Meta:
         db_table = 'main_cmpo'
-
