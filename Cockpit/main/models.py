@@ -136,38 +136,6 @@ class KeyInput(models.Model):
         verbose_name = 'บันทึก KPI'
         verbose_name_plural = 'บันทึก KPI'
 
-class Country(models.Model):
-    name = models.CharField(max_length=30)
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        db_table = 'main_country'
-
-class City(models.Model):
-    name = models.CharField(max_length=30)
-    country = models.ForeignKey(Country, on_delete=models.CASCADE)
-    
-    def __str__(self):
-        return self.name
-    
-    class Meta:
-        db_table = 'main_city'
-
-class Person(models.Model):
-    fname = models.CharField(max_length=100)
-    lname = models.CharField(max_length=100)
-    birth = models.DateField()
-    city = models.ForeignKey(City, on_delete=models.CASCADE)
-    country = models.ForeignKey(Country, on_delete=models.CASCADE)
-    
-    def __str__(self):
-        return self.fname+' - '+self.lname
-    
-    class Meta:
-        db_table = 'main_person'
-
 class Chospcode(models.Model):
     hospcode = models.CharField(max_length=5)
     hosname = models.CharField(max_length=255)
@@ -392,3 +360,39 @@ class Cmpo(models.Model):
     
     class Meta:
         db_table = 'main_cmpo'
+
+class Chospital(models.Model):
+    hospcode = models.CharField(max_length=5, primary_key=True)
+    hosname = models.CharField(max_length=255, null=True, blank=True)
+    hostype = models.CharField(max_length=2, null=True, blank=True)
+    address = models.CharField(max_length=50, null=True, blank=True)
+    road = models.CharField(max_length=50, null=True, blank=True)
+    mu = models.CharField(max_length=2, null=True, blank=True)
+    subdistcode = models.CharField(max_length=2, null=True, blank=True)
+    distcode = models.CharField(max_length=2, null=True, blank=True)
+    provcode = models.CharField(max_length=2, null=True, blank=True)
+    postcode = models.CharField(max_length=5, null=True, blank=True)
+    hoscodenew = models.CharField(max_length=9, null=True, blank=True)
+    bed = models.IntegerField(null=True, blank=True)
+    level_service = models.CharField(max_length=255, null=True, blank=True)
+    bedhos = models.CharField(max_length=5, null=True, blank=True)
+    hdc_regist = models.IntegerField(null=True, blank=True)
+    dep = models.CharField(max_length=5, null=True, blank=True)
+    hmain_sent = models.CharField(max_length=5, null=True, blank=True)
+    regiter_date = models.DateField(null=True, blank=True)
+    mcode = models.CharField(max_length=5)
+    status = models.IntegerField()
+
+    def __str__(self):
+        return self.hosname
+
+class Excellence(models.Model):
+    short_name = models.CharField(max_length=10)
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+
+    
+

@@ -1,6 +1,6 @@
 # Cockpit is Project about KPI Report 2020
-## Python Django 3.0
-## https://tutorial101.blogspot.com/2020/07/how-to-use-chart-js-with-django-using.html 
+## Python Django 3.0.9
+beautifulsoup4==4.9.1
 bootstrap4==0.1.0
 selenium==3.141.0
 pandas==1.1.0

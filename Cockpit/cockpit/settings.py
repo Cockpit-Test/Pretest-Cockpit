@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     
     'crispy_forms',
+    'chartjs',
     'widget_tweaks',
     'django_filters',
     'dj_chartjs',
@@ -82,7 +83,7 @@ WSGI_APPLICATION = 'cockpit.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'cockpittest',
+        'NAME': 'newcockpit',
         'HOST': 'localhost',
         'PORT': '3300',
         'USER': 'root',

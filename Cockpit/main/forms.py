@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from main.models import KeyInput, Kpi, Person, Profile, City, Country
+from main.models import *
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
@@ -61,22 +61,4 @@ class KeyInputForm(forms.ModelForm):
                 , 'a11':"A - สิงหาคม 2563", 'b11':"B - สิงหาคม 2563"
                 , 'a12':"A - กันยายน 2563", 'b12':"B - กันยายน 2563"
          }
-
-class PersonForm(forms.ModelForm): 
-    class Meta:
-        model = Person
-        fields = ('fname', 'lname', 'birth', 'country', 'city')
- 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['city'].queryset = City.objects.none()
- 
-        if 'country' in self.data:
-            try:
-                country_id = int(self.data.get('country'))
-                self.fields['city'].queryset = City.objects.filter(country_id=country_id).order_by('name')
-            except (ValueError, TypeError):
-                pass  # invalid input from the client; ignore and fallback to empty City queryset
-        elif self.instance.pk:
-            self.fields['city'].queryset = self.instance.country.city_set.order_by('name')
 
