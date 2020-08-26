@@ -164,7 +164,7 @@ class Input(models.Model):
         if not self.id:
             self.created = timezone.now()
         self.modified = timezone.now()
-        return super(KeyInput, self).save(*args, **kwargs)
+        return super(Input, self).save(*args, **kwargs)
     def __str__(self):
         return self.user.first_name
 
